@@ -16,20 +16,20 @@ app.use((req, res, next) => {
     var log = `${now}: ${req.method}  ${req.url}`;
 
     fs.appendFile('server.log', log + '\n', (err) => {
-        if(err){
+        if (err) {
             console.log('Unable to append to server.log ', err);
         }
     })
     next();
 })
-
-app.use((req, res, next) => {
-    if(serverStatus === "maintainence"){
+if (serverStatus === "maintainence") {
+    app.use((req, res, next) => {
         res.render('maintainence.hbs', {
             heading: "Website is Under Maintainence"
         })
-    }
-})
+    })
+}
+
 
 hbs.registerHelper('getCurrentYear', () => {
     return new Date().getFullYear();
