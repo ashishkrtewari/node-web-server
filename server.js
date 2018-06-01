@@ -4,7 +4,8 @@ const fs = require('fs');
 
 var app = express();
 
-var serverStatus = "maintainence";
+// var serverStatus = "maintainence";
+var serverStatus = "live";
 hbs.registerPartials(__dirname + '/views/partials');
 app.set('view engine', 'hbs');
 
